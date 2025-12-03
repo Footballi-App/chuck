@@ -20,6 +20,7 @@
         <item name="colorPrimaryDark">@color/chuck_colorPrimaryDark</item>
         <item name="colorAccent">@color/chuck_colorAccent</item>
         <item name="windowActionModeOverlay">true</item>
+        <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
     </style>
 
     <style name="Chuck.TextAppearance.ListItem" parent="android:TextAppearance">
