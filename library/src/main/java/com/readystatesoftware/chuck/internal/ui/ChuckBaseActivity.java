@@ -16,8 +16,13 @@
 package com.readystatesoftware.chuck.internal.ui;
 
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.readystatesoftware.chuck.internal.support.ChuckNotificationHelper;
 
@@ -35,6 +40,20 @@ public abstract class ChuckBaseActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         notificationHelper = new ChuckNotificationHelper(this);
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        // Edge-to-edge is mandatory from Android 15/16: keep content clear of the gesture bar and
+        // cutouts. The top inset is left to the AppBarLayout, which draws its background behind it.
+        View content = findViewById(android.R.id.content);
+        ViewCompat.setOnApplyWindowInsetsListener(content, (v, insets) -> {
+            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars()
+                    | WindowInsetsCompat.Type.displayCutout());
+            v.setPadding(bars.left, 0, bars.right, bars.bottom);
+            return insets;
+        });
     }
 
     @Override
