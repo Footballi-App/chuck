@@ -12,10 +12,10 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.google.code.gson:gson:2.8.9'
+    compileOnly 'com.google.code.gson:gson:2.14.0'
     api "com.squareup.okhttp3:okhttp:$okhttp3Version"
     api 'nl.qbusict:cupboard:2.2.0'
-    api 'com.google.android.material:material:1.4.0'
+    api 'com.google.android.material:material:1.14.0'
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

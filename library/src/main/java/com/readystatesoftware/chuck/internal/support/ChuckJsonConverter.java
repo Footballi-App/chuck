@@ -18,9 +18,6 @@ package com.readystatesoftware.chuck.internal.support;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.internal.bind.DateTypeAdapter;
-
-import java.util.Date;
 
 public class ChuckJsonConverter {
 
@@ -35,7 +32,6 @@ public class ChuckJsonConverter {
                     .setPrettyPrinting()
                     .serializeNulls()
                     .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-                    .registerTypeAdapter(Date.class, new DateTypeAdapter())
                     .create();
         }
         return gson;

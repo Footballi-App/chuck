@@ -28,7 +28,7 @@ ext {
     minSdkVersion = 23
     targetSdkVersion = 36
     compileSdkVersion = 37
-    okhttp3Version = '3.12.13'
+    okhttp3Version = '5.5.0'
 }
 
 subprojects {
