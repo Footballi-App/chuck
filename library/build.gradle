@@ -3,21 +3,22 @@ plugins {
 }
 apply plugin: 'com.android.library'
 
+base.archivesName = 'chuck'
+
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-    archivesBaseName = "chuck"
+    namespace = 'com.readystatesoftware.chuck'
+    compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
+        minSdk = rootProject.ext.minSdkVersion
         consumerProguardFiles 'proguard-rules.pro'
     }
 }
 
 dependencies {
-    compileOnly 'com.google.code.gson:gson:2.8.9'
+    compileOnly 'com.google.code.gson:gson:2.14.0'
     api "com.squareup.okhttp3:okhttp:$okhttp3Version"
     api 'nl.qbusict:cupboard:2.2.0'
-    api 'com.google.android.material:material:1.4.0'
+    api 'com.google.android.material:material:1.14.0'
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')

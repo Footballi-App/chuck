@@ -3,12 +3,13 @@ plugins {
 }
 apply plugin: 'com.android.library'
 
+base.archivesName = 'chuck-no-op'
+
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-    archivesBaseName = "chuck-no-op"
+    namespace = 'com.readystatesoftware.chuck'
+    compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
+        minSdk = rootProject.ext.minSdkVersion
     }
 }
 
