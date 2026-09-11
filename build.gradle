@@ -2,11 +2,11 @@
 
 buildscript {
     repositories {
-        jcenter()
         google()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.1'
+        classpath 'com.android.tools.build:gradle:9.1.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -18,19 +18,26 @@ allprojects {
     group = GROUP
 
     repositories {
-        jcenter()
         google()
+        mavenCentral()
+        maven { url = uri('https://jitpack.io') }
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+ext {
+    minSdkVersion = 23
+    targetSdkVersion = 36
+    compileSdkVersion = 37
+    okhttp3Version = '5.5.0'
 }
 
-ext {
-    minSdkVersion = 16
-    targetSdkVersion = 28
-    compileSdkVersion = 28
-    buildToolsVersion = '28.0.3'
-    okhttp3Version = '3.12.13'
+subprojects {
+    plugins.withId('com.android.base') {
+        android {
+            compileOptions {
+                sourceCompatibility = JavaVersion.VERSION_21
+                targetCompatibility = JavaVersion.VERSION_21
+            }
+        }
+    }
 }

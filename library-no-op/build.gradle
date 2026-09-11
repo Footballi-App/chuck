@@ -1,19 +1,17 @@
-plugins {
-    id "com.github.dcendents.android-maven" version "2.1"
-}
 apply plugin: 'com.android.library'
 
+base.archivesName = 'chuck-no-op'
+
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-    archivesBaseName = "chuck-no-op"
+    namespace = 'com.readystatesoftware.chuck'
+    compileSdk = rootProject.ext.compileSdkVersion
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
+        minSdk = rootProject.ext.minSdkVersion
     }
 }
 
 dependencies {
-    api "com.squareup.okhttp3:okhttp:$okhttp3Version"
+    api "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp3Version"
 }
 
 apply from: rootProject.file('gradle/gradle-mvn-push.gradle')
